@@ -469,7 +469,7 @@ export default function CollidingBlocksSim() {
           )}
 
           {isMobile && (
-            <div className="mb-4 rounded-xl bg-[#0b1020] p-4 text-center text-sm text-white/80 ring-1 ring-white/10">
+            <div className="mb-4 rounded-xl bg-[#0b1020] p-4 text-center text-sm text-[#59f2d8] ring-1 ring-white/10">
               This simulation is best experienced on a larger screen.
               <br />
               Please rotate your device or use a laptop/desktop for full interaction.
