@@ -4,7 +4,7 @@ An interactive physics simulation inspired by 3Blue1Brown’s Colliding Blocks p
 
 This project visualizes elastic collisions between blocks and demonstrates how the digits of π emerge from classical mechanics.
 
-🔗 Live demo: https://your-vercel-link.vercel.app
+🔗 Live demo: https://colliding-blocks-and-pi.vercel.app/
 
 ## Features
 - Real-time elastic collision simulation
