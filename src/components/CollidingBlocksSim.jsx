@@ -564,7 +564,56 @@ export default function CollidingBlocksSim() {
 
         </div>
       </div>
-      
+      {/* ====== Credits ====== */}
+      <div className="mt-12 mb-8 px-4">
+        <div
+          className="
+            mx-auto max-w-[1200px]
+            rounded-3xl
+            bg-gradient-to-b from-[#6688ff] to-[#05070c]
+            p-7
+            shadow-[0_25px_70px_rgba(0,0,0,0.9)]
+            text-center
+            animate-[fadeUp_500ms_ease-out]
+          "
+        >
+          <p className="text-[#ebe9f3]">
+            <br />
+            Inspired by{" "}
+            <a
+              href="https://www.youtube.com/@3blue1brown"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#59f2d8] hover:text-white transition-colors underline underline-offset-4"
+            >
+              3Blue1Brown
+            </a>
+          </p>
+
+          <p className="mt-3 text-[#ebe9f3]/90">
+            Simulation, visualization, and UI by{" "}
+            <span className="text-[#ffd166] font-semibold">Aditya Mondal · B.Tech AI · IIT Kharagpur</span>
+          </p>
+
+          <p className="mt-1 text-[#ebe9f3]/65 text-sm">
+            Built with React, HTML Canvas, and Tailwind CSS
+          </p>
+
+          <div className="my-5 h-px w-full bg-[#ffffff]/15" />
+
+          <p className="text-[#ebe9f3]/80 text-sm">
+            For upgrade suggestions, feedback, or collaboration ideas,
+            feel free to reach out at{" "}
+            <span className="text-[#59f2d8] font-mono">
+              (firstname)(lastname).slsn10b(at)gmail.com
+            </span>
+          </p>
+          <p className="mt-4 text-xs text-[#ffffff]/45">
+            © {new Date().getFullYear()} Aditya. All rights reserved.
+          </p>
+        </div>
+      </div>
+
     </div>
   );
 }
