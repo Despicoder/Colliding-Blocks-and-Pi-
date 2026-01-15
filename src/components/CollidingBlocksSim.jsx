@@ -71,13 +71,6 @@ function computeCollisionsHighMass(m2) {
   return Math.floor(Math.PI / angle);
 }
 
-function formatMassLabel(m2) {
-  if (m2 <= 1e12) {
-    return m2.toExponential(0) + " kg";
-  }
-  return "10¹²… kg";
-}
-
 export default function CollidingBlocksSim() {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
@@ -95,6 +88,14 @@ export default function CollidingBlocksSim() {
   const nextCollisionIsWallRef = useRef(false); // first collision = block
   const REAL_SIM_MAX_M2 = 1e12;
   const [showHighMassInfo, setShowHighMassInfo] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
 
   const [m2Str, setM2Str] = useState("100");
 
@@ -466,17 +467,25 @@ export default function CollidingBlocksSim() {
               )}
             </div>
           )}
-                    
+
+          {isMobile && (
+            <div className="mb-4 rounded-xl bg-[#0b1020] p-4 text-center text-sm text-white/80 ring-1 ring-white/10">
+              This simulation is best experienced on a larger screen.
+              <br />
+              Please rotate your device or use a laptop/desktop for full interaction.
+            </div>
+          )}
+       
           {/* ====== 2. Visualization Stage ====== */}
           <div className="scene-shell mb-10 w-full shadow-2xl shadow-black/50" style={{ height: CANVAS_H }}>
             <canvas ref={canvasRef} className="block h-full w-full" />
           </div>
-          <br />
           {/* ====== 3. Control Panel ====== */}
-          <div className="flex w-full max-w-[400px] items-center justify-between gap-8 mb-6">
-            {/* ROW A: Playback Controls (aligned with rows below) */}
-            <div className="flex w-full max-w-[700px] items-center justify-between">
-              {/* left column = exactly same column as Mass Ratio / Simulation Speed tags */}
+          <div className="mb-4 flex flex-col items-center justify-center px-4">
+
+            {/* ROW A: Playback Controls */}
+            <div className="flex items-center justify-between">
+              {/* left column */}
               <div className="w-[240px] flex justify-start">
                 <button
                   className="neon-btn gold min-w-[140px] tracking-wider"
@@ -486,8 +495,8 @@ export default function CollidingBlocksSim() {
                 </button>
               </div>
 
-              {/* right column = exactly same column as input/slider */}
-              <div className="w-[380px] flex justify-start">
+              {/* right column */}
+              <div className="w-[240px] flex justify-start">
                 <button
                   className="neon-btn gold min-w-[140px] tracking-wider"
                   onClick={reset}
@@ -496,45 +505,45 @@ export default function CollidingBlocksSim() {
                 </button>
               </div>
             </div>
-
-
-            {/* ROW B: Mass Input (aligned columns) */}
-            <div className="flex w-full max-w-[700px] items-center justify-between">
-              {/* left tag column */}
+            <br />
+            {/* ROW B: Mass Input */}
+            <div className="flex items-center justify-between">
+              {/* left column */}
               <div className="w-[240px] flex justify-start">
-                <div className="neon-btn green pointer-events-none select-none !px-3 !py-1 text-base">
-                  Mass Ratio
+                <div className="neon-btn green pointer-events-none select-none 
+                                !px-3 !py-1 text-base 
+                                !border-transparent !shadow-none">
+                  Mass Ratio:
                 </div>
               </div>
 
-              {/* right control column */}
-              <div className="w-[350px] flex justify-start">
-                <div className="relative group w-[140px]">
+              {/* right column */}
+              <div className="w-[240px] flex justify-start">
+                <div className="relative group w-full">
                   <input
                     type="text"
                     value={m2Str}
                     onChange={handleMassChange}
                     className="w-full bg-[#0b1020] border-2 border-white/20 rounded-lg px-3 py-2 text-center text-xl font-mono text-[#59f2d8] focus:border-[#59f2d8] focus:outline-none focus:shadow-[0_0_15px_rgba(89,242,216,0.3)] transition-all"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30 text-sm pointer-events-none">
-                  </span>
                 </div>
               </div>
             </div>
 
-
-
-            {/* ROW C: Slider (aligned columns) */}
-            <div className="flex w-full max-w-[700px] items-center justify-between">
-              {/* left tag column */}
+            {/* ROW C: Slider */}
+            <div className="flex items-center justify-between">
+              {/* left column */}
               <div className="w-[240px] flex justify-start">
-                <div className="neon-btn blue pointer-events-none select-none !px-4 !py-2 text-lg whitespace-nowrap">
-                  Simulation Speed
+                <div className="neon-btn blue pointer-events-none select-none 
+                                !px-4 !py-2 text-lg whitespace-nowrap 
+                                !border-transparent !shadow-none">
+                  Simulation Speed:
                 </div>
+
               </div>
 
-              {/* right control column */}
-              <div className="w-[200px] flex items-center gap-4">
+              {/* right column */}
+              <div className="w-[240px] flex items-center gap-4">
                 <input
                   type="range"
                   min={0.2}
@@ -550,8 +559,8 @@ export default function CollidingBlocksSim() {
               </div>
             </div>
 
-
           </div>
+
 
         </div>
       </div>

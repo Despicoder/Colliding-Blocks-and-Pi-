@@ -154,7 +154,7 @@ export function drawScene(ctx, sim, params) {
   const scale = usableW / WORLD_UNITS_VISIBLE;
 
   // blocks
-  const b1x = wallX + x1 * scale;
+  const b1x = Math.max(wallX, wallX + x1 * scale);
   const b2x = wallX + x2 * scale;
 
   const b1w = size1 * scale;
@@ -249,7 +249,7 @@ export function drawScene(ctx, sim, params) {
     const a = 1 - age;
 
     const sx = wallX + sp.x * scale;
-    const sy = floorY - 35;
+    const sy = floorY - 25;
 
     const r = 10 + 10 * sp.strength;
 
