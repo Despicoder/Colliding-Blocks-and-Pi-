@@ -1,0 +1,112 @@
+/* ====== Scene shell (like your screenshot) ====== */
+.scene-shell {
+  border-radius: 28px;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  position: relative;
+}
+
+
+.scene-title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 34px;
+  font-family: ui-serif, Georgia, serif;
+  font-weight: 600;
+  color: #eaeaea;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.65);
+  pointer-events: none;
+}
+
+/* ====== Neon bevel buttons ====== */
+.neon-btn {
+  border-radius: 10px;
+  padding: 10px 26px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #eaeaea;
+
+  background: linear-gradient(180deg, rgba(25,25,25,0.85), rgba(10,10,10,0.92));
+  border: 2px solid rgba(255,255,255,0.22);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,0.65),
+    0 10px 24px rgba(0,0,0,0.45);
+
+  transition: 150ms ease;
+  user-select: none;
+}
+
+.neon-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.neon-btn:active {
+  transform: translateY(0px);
+  filter: brightness(0.98);
+}
+
+.neon-btn.blue {
+  border-color: rgba(140, 210, 255, 0.75);
+  box-shadow:
+    0 0 0 1px rgba(140, 210, 255, 0.16),
+    0 0 22px rgba(80, 190, 255, 0.18),
+    inset 0 0 0 1px rgba(0,0,0,0.65),
+    0 10px 24px rgba(0,0,0,0.45);
+}
+
+.neon-btn.green {
+  border-color: rgba(70, 255, 230, 0.58);
+  box-shadow:
+    0 0 0 1px rgba(70, 255, 230, 0.12),
+    0 0 22px rgba(70, 255, 230, 0.16),
+    inset 0 0 0 1px rgba(0,0,0,0.65),
+    0 10px 24px rgba(0,0,0,0.45);
+}
+
+.neon-btn.gold {
+  border-color: rgba(255, 220, 120, 0.58);
+  box-shadow:
+    0 0 0 1px rgba(255, 220, 120, 0.12),
+    0 0 22px rgba(255, 220, 120, 0.14),
+    inset 0 0 0 1px rgba(0,0,0,0.65),
+    0 10px 24px rgba(0,0,0,0.45);
+}
+
+/* nicer slider for this UI */
+.speed-slider {
+  width: 100%;
+  accent-color: #59f2d8;
+}
+
+/* smaller neon button variant for keypad */
+.neon-btn.sm {
+  padding: 0;
+  width: 74px;
+  height: 56px;
+  font-size: 22px;
+  border-radius: 12px;
+}
+
+/* utility for full-width buttons inside panels */
+.neon-btn.wide {
+  width: 100%;
+  height: 56px;
+  font-size: 22px;
+}
+
+@keyframes drawerIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
